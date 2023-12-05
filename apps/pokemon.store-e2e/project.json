@@ -1,0 +1,29 @@
+{
+  "name": "pokemon.store-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/pokemon.store-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/pokemon.store-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "pokemon.store:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "pokemon.store:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/pokemon.store-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["pokemon.store"]
+}
